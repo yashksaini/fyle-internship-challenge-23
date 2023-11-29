@@ -1,43 +1,80 @@
-# Fyle Frontend Challenge
+# Fyle Frontend development challenge
+Challenge outline: Github Repositories listing page
 
-## Who is this for?
 
-This challenge is meant for candidates who wish to intern at Fyle and work with our engineering team. The candidate should be able to commit to at least 6 months of dedicated time for internship.
+### Initial Screen
+![screencapture-localhost-4200-2023-11-29-08_27_11](https://github.com/yashksaini/fyle-internship-challenge-23/assets/101442489/bd49bf0d-948c-4262-883f-9912fab16c82)
 
-## Why work at Fyle?
 
-Fyle is a fast-growing Expense Management SaaS product. We are ~40 strong engineering team at the moment. 
+### Search Username
+![screencapture-localhost-4200-2023-11-29-07_39_35](https://github.com/yashksaini/fyle-internship-challenge-23/assets/101442489/e1f152a4-e661-4c11-ac81-0ef8adec037b)
 
-We are an extremely transparent organization. Check out our [careers page](https://careers.fylehq.com) that will give you a glimpse of what it is like to work at Fyle. Also, check out our Glassdoor reviews [here](https://www.glassdoor.co.in/Reviews/Fyle-Reviews-E1723235.htm). You can read stories from our teammates [here](https://stories.fylehq.com).
 
-## Challenge outline
+### Page 3 of repositories
 
-This challenge involves implementing application using github api. 
+![screencapture-localhost-4200-2023-11-29-07_39_52](https://github.com/yashksaini/fyle-internship-challenge-23/assets/101442489/4d751de8-ed83-4553-8662-c92891ef5f34)
 
-The services that you need to use are already implemented - check out ApiService.
 
-You can see details of this challenge [here](https://fyleuniverse.notion.site/fyleuniverse/Fyle-Frontend-development-challenge-cb5085e5e0864e769e7b98c694400aaa)
 
-__Note__ - This challenge is in angular. We work on angular frameworks & after you join we expect the same from you. Hence it is required to complete this assignement in angular itself.
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [Running Unit Tests](#running-unit-tests)
+- [Assumptions](#assumptions)
 
-## What happens next?
+## Prerequisites
 
-You will hear back within 48 hours from us via email.
+Before running the application and unit tests, make sure you have the following prerequisites installed on your system:
+
+- [Node.js](https://nodejs.org/): The runtime environment for running Angular applications.
+- [Angular CLI](https://angular.io/cli): The command-line interface for Angular applications.
 
 ## Installation
 
-1. Fork this repository to your github account.
-2. Clone the forked repository and proceed with steps mentioned below.
+Clone and run the GitHub repository to your local machine:
+```
+git clone https://github.com/yashksaini/fyle-internship-challenge-23.git
+```
+```
+cd fyle-internship-challenge-23
+```
+```
+npm install
+```
 
-### Install requirements
-* Install angular cli [Ref](https://angular.io/cli)
-* `npm install` in this repository 
+## Running the Application
 
-## Development server
+To run the GitHub User Search Application, follow these steps:
 
-Run `ng serve` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+- Ensure you have completed the installation steps as mentioned above.
 
-## Further help
+- Open a terminal and navigate to the project's root directory if you're not already there.
 
-Visit the [Angular Documentation](https://angular.io/guide/styleguide) to learn more.
-Styling is to be strictly done with [Tailwind](https://tailwindcss.com/docs/installation).
+- Run the following command to start the application:
+
+   ```
+   ng serve
+   ```
+
+- The application should now be running locally. Open your web browser and access the app at `http://localhost:4200/`.
+
+## Running Unit Tests
+
+Run all tests for the application
+   ```
+   ng test 
+   ```
+
+## Assumptions
+
+Please note the following assumptions made during the development of this assignment:
+
+- The assignment focuses on searching for GitHub users by using their usernames, displaying user details, and listing their public repositories.
+- 60 API Requests per hour.
+
+For more information or any assistance, please contact : )
+
+Mail: yashdms1@gmail.com 
+
+Website: https://yashksaini.netlify.app 
