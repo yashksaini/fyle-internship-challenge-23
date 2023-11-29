@@ -1,0 +1,49 @@
+<div class="flex justify-start gap-4 flex-col md:flex-row md:items-start">
+  <div class="md:w-[240px] w-full flex flex-col justify-center items-center">
+    <img
+      [src]="this.userData?.avatar_url"
+      class="w-40 h-40 rounded-full border-2 border-gray-300"
+    />
+    <a
+      [href]="this.userData?.html_url"
+      target="_blank"
+      class="leading-4 text-[14px] text-blue-600 mt-4"
+      >{{ this.userData?.html_url }}</a
+    >
+  </div>
+  <div>
+    <h1 class="font-bold text-4xl leading-normal">
+      {{ this.userData?.name || "NA" }}
+    </h1>
+    <p class="leading-5 text-[16px] text-gray-500 mb-2">
+      {{ this.userData?.bio || "NA" }}
+    </p>
+    <p class="leading-4 text-[15px] text-gray-400 mb-2">
+      Location: {{ this.userData?.location || "NA" }}
+    </p>
+    <a
+      class="leading-4 text-[15px] text-blue-600 mb-2"
+      *ngIf="this.userData?.twitter_username !== null"
+      [href]="'https://twitter.com/' + this.userData?.twitter_username"
+      target="_blank"
+      >https://twitter.com/{{ this.userData?.twitter_username }}</a
+    >
+    <div
+      class="leading-4 text-[15px] text-grey-600 mt-3 mb-2 flex justify-start gap-4"
+    >
+      <div>
+        <b class="font-medium">Follwers: </b>
+        <span>{{ this.userData?.followers }}</span>
+      </div>
+      <div>
+        <b class="font-medium">Following: </b>
+        <span>{{ this.userData?.following }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="w-full h-[2px] bg-gray-200 mt-6 mb-6"></div>
+<h1 class="mb-4">
+  Total Repositories
+  <b>({{ this.userData?.public_repos }})</b>
+</h1>

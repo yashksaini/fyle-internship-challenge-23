@@ -1,5 +1,139 @@
-<div class="grid h-screen place-items-center">
-  <div class="font-bold text-3xl">
-    Fyle Internship Challenge
+<div class="w-full min-h-[100dvh] flex flex-col justify-between">
+  <nav
+    class="w-full mb-4 bg-gray-100 h-16 flex justify-center items-center pl-4 gap-4"
+  >
+    <img src="../assets/logo.png" class="w-10 h-10" />
+    <h1 class="text-xl font-medium">Github Profile Finder</h1>
+  </nav>
+  <form
+    (ngSubmit)="searchProfile()"
+    class="w-[768px] max-w-[100%] m-auto mt-2 p-4"
+  >
+    <label class="mb-2 block text-xl font-normal text-gray-500"
+      >Github Username</label
+    >
+    <div class="flex justify-center gap-2">
+      <input
+        required
+        type="text"
+        [value]="userName"
+        (change)="setUserName($event)"
+        name="userName"
+        placeholder="Enter Github Username"
+        class="border border-gray-400 w-[100%] focus:outline-none p-4 rounded-xl h-12"
+      />
+      <button
+        class="w-40 h-12 bg-blue-500 text-white rounded-xl focus:outline-none"
+      >
+        Show Profile
+      </button>
+    </div>
+  </form>
+  <div class="m-auto mt-4 w-[768px] max-w-[100%] p-4">
+    <div *ngIf="isLoading">
+      <img src="../assets/loader.gif" class="w-full" />
+    </div>
+    <app-profile
+      *ngIf="isLoading === false && userNameFound"
+      [userData]="userData"
+    ></app-profile>
+    <div
+      *ngIf="
+        isLoading === false && !userNameFound && userNameFound != undefined
+      "
+    >
+      <h1 class="text-center mt-4 mb-4 text-gray-400 text-sm">
+        No user exits for this username
+      </h1>
+      <h1 class="text-center mt-4 mb-4 text-red-400 text-sm">
+        {{ errorMessage.split(":")[0] }} {{ errorMessage.split(":")[1] }}
+      </h1>
+    </div>
+
+    <div
+      *ngIf="
+        isLoading === false && userNameFound && this.userData.public_repos > 0
+      "
+      class="flex justify-between items-center h-16"
+    >
+      <div
+        class="bg-gray-100 p-2 pl-4 pr-4 h-12 flex justify-center items-center gap-2 rounded-md"
+      >
+        <label class="font-medium">Per Page</label>
+        <select
+          (change)="reposLimit($event)"
+          class="bg-gray-100 hover:cursor-pointer focus:outline-none"
+          [value]="this.repoLimit"
+        >
+          <option value="10">10</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+      <div
+        class="bg-gray-100 p-2 pl-4 pr-4 h-12 flex justify-center items-center gap-2 rounded-md"
+      >
+        <label class="font-medium">Order</label>
+        <select
+          (change)="reposOrder($event)"
+          class="bg-gray-100 hover:cursor-pointer focus:outline-none"
+        >
+          <option value="desc">Latest</option>
+          <option value="asc">Oldest</option>
+        </select>
+      </div>
+    </div>
+    <div
+      *ngIf="
+        isLoading === false && userNameFound && this.userData.public_repos > 0
+      "
+      class="flex justify-between items-center h-16"
+    >
+      <button
+        (click)="updatePageNo('prev')"
+        class="h-10 w-24 rounded-md bg-gray-100 text-[12px]"
+      >
+        Previous
+      </button>
+      <button class="h-10 w-20 rounded-full bg-blue-500 text-white text-[12px]">
+        {{ this.pageNo }} of {{ this.totalPages }}
+      </button>
+      <button
+        (click)="updatePageNo('next')"
+        class="h-10 w-20 rounded-md bg-gray-100 text-[12px]"
+      >
+        Next
+      </button>
+    </div>
+    <div *ngIf="isLoading === false && userNameFound && loadingRepos">
+      <h1 class="text-center mt-4 mb-4 text-gray-400 text-sm">
+        Loading Repositories ...
+      </h1>
+    </div>
+    <div
+      *ngIf="
+        isLoading === false &&
+        userNameFound &&
+        !loadingRepos &&
+        this.userData.public_repos > 0
+      "
+    >
+      <app-repo [reposData]="reposData"></app-repo>
+    </div>
+    <div
+      *ngIf="
+        isLoading === false &&
+        userNameFound &&
+        !loadingRepos &&
+        this.userData.public_repos == 0
+      "
+    >
+      <h1 class="text-center mt-4 mb-4 text-gray-400 text-sm">
+        No Repositories Found for the user
+      </h1>
+    </div>
   </div>
+  <footer class="w-full h-16 bg-gray-100 flex items-center justify-center">
+    <p class="text-center text-gray-500 text-sm">Yash Kumar Saini</p>
+  </footer>
 </div>
